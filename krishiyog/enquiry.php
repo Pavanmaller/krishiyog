@@ -46,14 +46,30 @@
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123909367-1"></script>
 <script type="text/javascript">
-function mailIt() {
-var elms=document.forms[0].elements;
+function validate() {
 
-var template="From: "+elms.fname.value+" "+elms.lname.value+ " %0A%0A" +elms.message.value;
-document.forms[0].action="mailto:enquiry@krishiyog.com?cc="+elms.email.value+"&subject="+elms.subject.value+"&body="+template ;
-document.forms[0].submit();
+    if ( document.buyerForm.gst.value.length!=15) {
+           document.buyerForm.gst.focus() ;
+					 document.getElementById('errorsgst').innerHTML="Enter gst with 15 digits";
+					 document.getElementById('errorsgst').style.color="red";
+        return false;
+    }
+		if (document.buyerForm.tan.value.length!=10) {
+           document.buyerForm.tan.focus() ;
+					 document.getElementById('errorstan').innerHTML="Enter tan with 10 digits";
+					 document.getElementById('errorstan').style.color="red";
+        return false;
+    }
+		if (document.buyerForm.pan.value.length!=16) {
+           document.buyerForm.pan.focus() ;
+					 document.getElementById('errorspan').innerHTML="Enter pan with 16 digits";
+					 document.getElementById('errorspan').style.color="red";
+        return false;
+    }
+		return true;
 }
 </script>
+
 
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -131,9 +147,9 @@ document.forms[0].submit();
 			<div class="row">
 				<div class="col-md-12 animate-box">
 					<h3>Buyer Form</h3>
-					<form action="#" method="post" onsubmit="mailIt(); return false;" enctype="text/plain">
+					<form name="buyerForm" action="#" method="post" onsubmit="return(validate())">
 						<div class="row form-group">
-							<div class="col-md-6">
+							<!--<div class="col-md-6">
 								<label for="fname">First Name</label>
 								<input type="text" id="fname" name="fname" class="form-control" required placeholder="Your firstname">
 							</div>
@@ -141,12 +157,13 @@ document.forms[0].submit();
 								<label for="lname">Last Name</label>
 								<input type="text" id="lname" name="lname" class="form-control" required placeholder="Your lastname">
 							</div>
-						</div>
+						</div>-->
 						<div class="row form-group">
 							<div class="col-md-6">
-									<label for="ftype">Farming type</label>
+
+
 							<select>
-								<option value="type">Type</option>
+								<option value="type">Farming type</option>
  								<option value="Natural Farming">Natural Farming</option>
  						  	<option value="Group Organic Certified">Group Organic Certified</option>
  						    <option value="Organic PGS">Organic PGS</option>
@@ -156,67 +173,64 @@ document.forms[0].submit();
 
 					    </select>
 							</div>
-							<div class="col-md-6">
-									<label for="kyc">KYC form</label>
-								<select>
-									<option value="gst">GST</option>
-									<option value="tan">TAN</option>
-									<option value="pan">PAN</option>
-
-								</select>
-							</div>
-						</div>
-						<!--<div class="row form-group" >
-							<div class="col-md-6 col-md-offset-3" >
-								<input type="button" value="New" style="width:100%;" onclick="myFunction()">
-							</div>
-
 
 						</div>
-						<div class="row form-group col-md-12" >
-							<div class="col-md-6" id="DynaDiv" >
+						<div class="row form-group">
+							<div class="col-md-4">
 
+								<input type="text" id="gst" name="gst" class="form-control" required  placeholder="Gst Number">
+								<div id ="errorsgst">
+								</div>
 							</div>
-							<div class="col-md-6" id=weightDiv>
+						<div class="col-md-4">
 
+							<input type="text" id="tan" name="tan" class="form-control" required placeholder="TAN Number">
+							<div id ="errorstan">
 							</div>
-						</br>
-					</div>-->
-						<div ng-app="add-row" ng-controller="MainCtrl">
-									<div class="row form-group">
-						 <fieldset  ng-repeat="column in columns">
-								<input type="text" name="columnName" ng-model="column.name" name="" placeholder="item" required>
-								<input type="text" name="columnName" ng-model="column.quantity" name="" placeholder="amount" required>
-						 <select name="data_type" required>
-							 <option value="">Quantity</option>
-							 <option ng-repeat="type in dataType"  value="{{type.dataTypeName}}" ng-model="dataType.id">{{type.dataTypeName}}</option>
-							</select>
+						</div>
 
+						<div class="col-md-4">
 
-							 <button class="remove"  ng-click="removeColumn($index)">x</button>
-						 </fieldset>
-						 <input type="button" class="addfields" value="Add" ng-click="addNewColumn()">
-					<!--	<button class="addfields" ng-click="setupNewGrid">Validate</button>-->
+							<input type="text" id="pan" name="pan" class="form-control" required placeholder="PAN Number">
+							<div id ="errorspan">
+							</div>
+						</div>
 
 					</div>
+						<div ng-app="add-row" ng-controller="MainCtrl">
+
+									<div class="row form-group">
+										<div class="col-md-12">
+						 				  <fieldset  ng-repeat="column in columns">
+												<input type="text" name="columnName" ng-model="column.name" name="" placeholder="item" required>
+												<input type="text" name="columnName" ng-model="column.quantity" name="" placeholder="amount" required>
+						 					  <select name="data_type" required>
+							 				    <option value="">Quantity</option>
+							 					  <option ng-repeat="type in dataType"  value="{{type.dataTypeName}}" ng-model="dataType.id">{{type.dataTypeName}}</option>
+												</select>
+							 				  <button class="remove"  ng-click="removeColumn($index)">x</button>
+						 				</fieldset>
+						 <input type="button" class="addfields" value="Add" ng-click="addNewColumn()">
+					<!--	<button class="addfields" ng-click="setupNewGrid">Validate</button>-->
+					</div>
+				</div>
 
 					<div class="msg">{{columns}}</div>
 					</div>
-						<div class="row form-group">
-							<div class="col-md-12">
-								<label for="email">Your Email</label>
-								<input type="email" id="email" name="email" class="form-control" required placeholder="Your email address">
-							</div>
-						</div>
+
 
 
 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label for="message">Message</label>
-								<textarea name="message" id="message" cols="30" rows="10" required class="form-control" placeholder="Write us something"></textarea>
+								<textarea name="message" id="message" cols="30" rows="10"
+								class="form-control" placeholder="Write us something"></textarea>
 							</div>
 						</div>
+						</div>
+
+
 						<div class="form-group">
 							<input type="submit" value="Send Message" class="btn btn-primary">
 						</div>
