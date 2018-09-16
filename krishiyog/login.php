@@ -1,9 +1,128 @@
 <?php
-include 'loginScript.php';
-if (isset($_SESSION['login_user'])) {
-  echo $_SESSION['login_user'];
-}
- ?>
+   include 'db_connect.php';
+   function Validate($data){
+     $data= trim($data);
+     $data = stripslashes($data);
+     $data=htmlspecialchars($data);
+     return $data;
+   }
+   session_start();
+   $error='';
+   $count=0;
+   if($_SERVER["REQUEST_METHOD"] == "POST")
+   {
+      // username and password sent from form
+      $number = Validate($_POST['number']);
+      $password = md5($_POST['password']);
+      if(isset($_POST['category']))
+      {
+        $category=$_POST['category'];
+      }
+      if($category == 'buyerdb')
+      {
+        $sql = "SELECT *
+        FROM buyerdb
+        WHERE buyerdb.bMobNo='$number' AND buyerdb.password='$password'";
+        $result = mysqli_query($connection,$sql);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $active = $row['id'];
+        $count = mysqli_num_rows($result);
+        $_SESSION['category']=$category;
+        if($count <= 1)
+        {
+           $_SESSION['login_user'] = $number;
+           header("Location: index.php");
+        }
+      }
+      if($category == 'communorg')
+      {
+        $sql = "SELECT *
+        FROM communorg
+        WHERE communorg.mbNo='$number' AND communorg.password='$password'";
+        $result = mysqli_query($connection,$sql);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $active = $row['id'];
+        $count = mysqli_num_rows($result);
+        $_SESSION['category']=$category;
+        if($count == 1)
+        {
+
+           $_SESSION['login_user'] = $number;
+           header("Location: index.php");
+        }
+      }
+      if($category == 'aggregator')
+      {
+        $sql = "SELECT *
+        FROM aggregator
+        WHERE aggregator.bMobNo='$number' AND aggregator.password='$password'";
+        $result = mysqli_query($connection,$sql);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $active = $row['id'];
+        $count = mysqli_num_rows($result);
+        $_SESSION['category']=$category;
+        if($count == 1)
+        {
+
+           $_SESSION['login_user'] = $number;
+           header("Location: index.html");
+        }
+      }
+      if($category == 'medexpertdb')
+      {
+        $sql = "SELECT *
+        FROM medexpertdb
+        WHERE medexpertdb.mbNo='$number' AND medexpertdb.password='$password'";
+        $result = mysqli_query($connection,$sql);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $active = $row['id'];
+        $count = mysqli_num_rows($result);
+        $_SESSION['category']=$category;
+        if($count == 1)
+        {
+
+           $_SESSION['login_user'] = $number;
+           header("Location: index.php");
+        }
+      }
+      if($category == 'sellerdb')
+      {
+        $sql = "SELECT *
+        FROM sellerdb
+        WHERE sellerdb.sMobNo='$number' AND sellerdb.password='$password'";
+        $result = mysqli_query($connection,$sql);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $active = $row['id'];
+        $count = mysqli_num_rows($result);
+        $_SESSION['category']=$category;
+        if($count == 1)
+        {
+
+           $_SESSION['login_user'] = $number;
+           header("Location: index.html");
+        }
+      }
+      /*$result = mysqli_query($connection,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['id'];
+      $count = mysqli_num_rows($result);
+      $_SESSION['category']=$category;*/
+      // If result matched $number and $mypassword, table row must be 1 row
+
+      /*if($count == 1)
+      {
+
+         $_SESSION['login_user'] = $number;
+         header("Location: index.html");
+      }*/
+      if($count<=0)
+      {
+         $error = "Your Login Name or Password is invalid";
+      }
+   }
+?>
+
+
  <html lang="en">
    <head>
      <!-- <meta name="google-signin-scope" content="profile email">
@@ -55,12 +174,12 @@ if (isset($_SESSION['login_user'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
-    <div class="card shadow container" style="width:30%;margin-top:100px;">
+    <div class="card shadow container" style="width:32%;margin-top:50px;">
       <div class="card-body">
         <div class="card-title">
         <h3>Login</h3>
         </div>
-        <form   method="post" action="">
+        <form  method="post" action="">
           <div class="form-group">
             <label for="exampleInputEmail1">Contact Number</label>
             <input type="number" name="number" class="form-control form-control-sm" id="number" aria-describedby="number" placeholder="Contact Number">
@@ -68,7 +187,20 @@ if (isset($_SESSION['login_user'])) {
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" name="password" class="form-control form-control-sm" id="password" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <b>Farmer/Producer/Processor</b>
+            <input type="radio" class="form-control form-control-sm"name="category" value="sellerdb" required>
+            <b>Buyer/Consumer</b>
+            <input type="radio" class="form-control form-control-sm" name="category" value="buyerdb" required>
+            <b>Aggregator</b>
+            <input type="radio" class="form-control form-control-sm" name="category" value="aggregator"required >
+            <b>Community</b>
+            <input type="radio" class="form-control form-control-sm"name="category" value="communorg"required>
+            <b>Wellness Advisor</b>
+            <input type="radio" class="form-control form-control-sm" name="category" value="medexpertdb"required>
+            <!-- <small id="number" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
           </div>
           <span><?php echo $error; ?></span>
           <button type="submit" name="login" class="btn btn-success">Get-in</button>
