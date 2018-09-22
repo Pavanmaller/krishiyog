@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+ ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -37,6 +41,7 @@
 	<link rel="stylesheet" href="css/owl.carousel.min.css">
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
@@ -47,13 +52,33 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123909367-1"></script>
 <script type="text/javascript">
 function validate() {
+	var	ifsc = $("#ifsc").val();
+	var ifscChecker = /^[A-Z|a-z]{4}[0][\d]{6}$/;
+	var accountNumber = $("#accountNumber").val();
+	var accountNumberChecker = /^\d{9,18}$/;
+	if (!ifscChecker.test(ifsc)) {
+		$("#errorifsc").html("Invalid IFSC code");
+		document.getElementById('errorifsc').style.color="red";
 
+	}else {
+		$("#errorifsc").html("");
+
+	}
+	if (!accountNumberChecker.test(accountNumber)) {
+		$("#erroraccountNumber").html("Invalid Account Number");
+		document.getElementById('erroraccountNumber').style.color="red";
+
+	}else {
+		$("#erroraccountNumber").html("");
+
+	}
     if ( document.buyerForm.gst.value.length!=15) {
            document.buyerForm.gst.focus() ;
 					 document.getElementById('errorsgst').innerHTML="Enter gst with 15 digits";
 					 document.getElementById('errorsgst').style.color="red";
         return false;
     }
+
 		if (document.buyerForm.tan.value.length!=10) {
            document.buyerForm.tan.focus() ;
 					 document.getElementById('errorstan').innerHTML="Enter tan with 10 digits";
@@ -108,24 +133,6 @@ function validate() {
 							<li><a href="contact.php"><b>Contact us</a></b></li>
 
 
-							<!--<li class="has-dropdown">
-								<a href="#">Services</a>
-								<ul class="dropdown">
-									<li><a href="#">Shop</a></li>
-									<li><a href="#">Discussion forum</a></li>
-									<li><a href="#">Sell/Support</a></li>
-								</ul>
-							</li>-->
-							<!--<li class="has-dropdown">
-								<a href="#">Tools</a>
-								<ul class="dropdown">
-									<li><a href="#">HTML5</a></li>
-									<li><a href="#">CSS3</a></li>
-									<li><a href="#">Sass</a></li>
-									<li><a href="#">jQuery</a></li>
-								</ul>
-							</li>-->
-							<!--<li><a href="contact.html">Contact</a></li>-->
 						</ul>
 					</div>
 					<div class="col-xs-2 text-right hidden-xs menu-2">
@@ -141,40 +148,144 @@ function validate() {
 
 <div style="padding-top:100px;"></div>
 
-
 	<div class="gtco-section">
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-12 animate-box">
 					<h3>Buyer Form</h3>
-					<form name="buyerForm" action="#" method="post" onsubmit="return(validate())">
-						<div class="row form-group">
-							<!--<div class="col-md-6">
-								<label for="fname">First Name</label>
-								<input type="text" id="fname" name="fname" class="form-control" required placeholder="Your firstname">
-							</div>
-							<div class="col-md-6">
-								<label for="lname">Last Name</label>
-								<input type="text" id="lname" name="lname" class="form-control" required placeholder="Your lastname">
-							</div>
-						</div>-->
-						<div class="row form-group">
-							<div class="col-md-6">
+					<hr>
+						<?php
+						$_SESSION['category']="buyerdb";
+						$_SESSION['fname']="Rohan";
+						$_SESSION['lname']="Rohan";
 
+							if ($_SESSION['category'] == 'buyerdb') {
+								echo "<div class='row'>
+												<div class='col-md-4'>
+													Name: ".$_SESSION['fname']." ".$_SESSION['lname']."
+												</div>
+												<div class='col-md-4'>
+													Contact Number: ".$_SESSION['mobile']."
+												</div>
+											</div>
+											<div class='row'>
+															<div class='col-md-4'>
+																Address: ".$_SESSION['address']."
+															</div>
+															<div class='col-md-4'>
+																Pincode: ".$_SESSION['pincode']."
+															</div>
+														</div>
+								 ";
+							}
+							if ($_SESSION['category'] == 'sellerdb') {
+								echo "<div class='row'>
+												<div class='col-md-4'>
+													Name: ".$_SESSION['fname']." ".$_SESSION['lname']."
+												</div>
+												<div class='col-md-4'>
+													Contact Number: ".$_SESSION['mobile']."
+												</div>
+											</div>
+											<div class='row'>
+															<div class='col-md-4'>
+																Address: ".$_SESSION['address']."
+															</div>
+															<div class='col-md-4'>
+																Pincode: ".$_SESSION['pincode']."
+															</div>
+														</div>
+								 ";
+							}
+							if ($_SESSION['category'] == 'aggregator') {
+								echo "<div class='row'>
+												<div class='col-md-4'>
+													Name: ".$_SESSION['fname']." ".$_SESSION['lname']."
+												</div>
+												<div class='col-md-4'>
+													Contact Number: ".$_SESSION['mobile']."
+												</div>
+											</div>
 
-							<select>
-								<option value="type">Farming type</option>
+								 ";
+							}
+							if ($_SESSION['category'] == 'medexpertdb') {
+								echo "<div class='row'>
+												<div class='col-md-4'>
+													Name: ".$_SESSION['fname']." ".$_SESSION['lname']."
+												</div>
+												<div class='col-md-4'>
+													Contact Number: ".$_SESSION['mobile']."
+												</div>
+											</div>
+											<div class='col-md-4'>
+												Specialization: ".$_SESSION['specialization']."
+											</div>
+										</div>
+								 ";
+							}
+							if ($_SESSION['category'] == 'communorg') {
+								echo "<div class='row'>
+												<div class='col-md-4'>
+													Name: ".$_SESSION['fname']." ".$_SESSION['lname']."
+												</div>
+												<div class='col-md-4'>
+													Contact Number: ".$_SESSION['mobile']."
+												</div>
+											</div>
+
+								 ";
+							}
+						 ?>
+						<hr>
+					<form name="buyerForm" action="buyerEnqdb.php" method="post" onsubmit="return(validate())">
+						<div class="row form-group">
+
+					 <div class="row form-group">
+							<div class="col-md-6">
+							<select name="farming_type" required>
+								<option selected disabled="disabled">Farming type</option>
  								<option value="Natural Farming">Natural Farming</option>
  						  	<option value="Group Organic Certified">Group Organic Certified</option>
  						    <option value="Organic PGS">Organic PGS</option>
- 						    <option value="Organic(Self Certifed)">Organic(Self Certifed)</option>
-								<option value="Organic(Not Certifed)">Organic(Not Certifed)</option>
+ 						    <option value="Organic(Self Certified)">Organic(Self Certified)</option>
+								<option value="Organic(Not Certified)">Organic(Not Certified)</option>
 								<option value="conventional">Conventional</option>
 
 					    </select>
 							</div>
 
 						</div>
+						<div class="row form-group">
+              <div class="col-md-6">
+                <input type="text" class="form-control" name="companyName" placeholder="Company or Organisation Name" value="" required>
+
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" name="email" placeholder="Your Email address" value="" required>
+
+              </div>
+						</div>
+
+						<hr>
+						<div class="row form-group">
+							<div class="col-md-4">
+								<input type="text" id="bankName"  class="form-control" name="bankName" placeholder="Bank Name" value="" required>
+							</div>
+							<div class="col-md-4">
+								<input type="text" id="ifsc"  class="form-control" name="ifsc" placeholder="IFSC Code" value="" required>
+								<div id="errorifsc">
+
+								</div>
+							</div>
+							<div class="col-md-4">
+								<input type="text" id="accountNumber"  class="form-control" name="accountNumber" placeholder="Account Number" value="" required>
+							</div>
+							<div id="erroraccountNumber">
+
+							</div>
+						</div>
+						<hr>
 						<div class="row form-group">
 							<div class="col-md-4">
 
@@ -197,38 +308,73 @@ function validate() {
 						</div>
 
 					</div>
-						<div ng-app="add-row" ng-controller="MainCtrl">
 
-									<div class="row form-group">
-										<div class="col-md-12">
-						 				  <fieldset  ng-repeat="column in columns">
-												<input type="text" name="columnName" ng-model="column.name" name="" placeholder="item" required>
-												<input type="text" name="columnName" ng-model="column.quantity" name="" placeholder="amount" required>
-						 					  <select name="data_type" required>
-							 				    <option value="">Quantity</option>
-							 					  <option ng-repeat="type in dataType"  value="{{type.dataTypeName}}" ng-model="dataType.id">{{type.dataTypeName}}</option>
-												</select>
-							 				  <button class="remove"  ng-click="removeColumn($index)">x</button>
-						 				</fieldset>
-						 <input type="button" class="addfields" value="Add" ng-click="addNewColumn()">
-					<!--	<button class="addfields" ng-click="setupNewGrid">Validate</button>-->
 					</div>
 				</div>
+				<script type="text/javascript" src="js/script.js"></script>
 
-					<div class="msg">{{columns}}</div>
-					</div>
+					<p>
+						<input type="button" value="Add Item" onClick="addRow('dataTable')" />
+						<input type="button" value="Remove Item(s)" onClick="deleteRow('dataTable')"  />
+						<p>(All acions apply only to entries with check marked check boxes only.)</p>
+					</p>
+								 <table id="dataTable" class="form" border="1">
+										<tbody>
+											<tr>
+												<p>
+							<td><input type="checkbox" required="required" name="chk[]" checked="checked" /></td>
+							<td>
+								<label>Item</label>
+								<input type="text" required="required" name="BX_Item[]">
+							 </td>
+							 <td>
+								<label for="BX_units">Units</label>
+								<input type="text" required="required" class="small"  name="BX_units[]">
+								 </td>
+							 <td>
+								<label for="BX_type">Measure</label>
+								<select id="BX_type" name="BX_type[]" required="required">
+									<option selected disabled="disabled">....</option>
+									<option value="Grams">Grams</option>
+									<option value="KG">KG</option>
+									<option value="Quintals">Quintals</option>
+									<option value="Box">Box</option>
+									<option value="Litre">Litre</option>
+									<option value="ml">ml</option>
+									<option value="dozen">Dozen</option>
+									<option value="others">others</option>
+								</select>
+							 </td>
+							 <td>
+								 <label for="">Duration</label>
+								 <select name="BX_duration[]" required>
+									 <option selected disabled="disabled" value="">....</option>
+									 <option value="Per Day">Per Day</option>
+									 <option value="Per Month">Per Week</option>
+									 <option value="Per Month">Per Month</option>
 
+								 </select>
+							 </td>
+								</p>
+											</tr>
+											</tbody>
+									</table>
+					<div class="clear"></div>
+							</fieldset>
 
-
-
-						<div class="row form-group">
-							<div class="col-md-12">
-								<label for="message">Message</label>
-								<textarea name="message" id="message" cols="30" rows="10"
-								class="form-control" placeholder="Write us something"></textarea>
+							<div class="form-group">
+								<label for="">Delivery address</label>
+								<input type="text" placeholder="Delivery Address" class="form-control" name="deliveryAddress" value="">
 							</div>
-						</div>
-						</div>
+
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" cols="30" rows="10"
+									class="form-control" placeholder="Tell us more about your products"></textarea>
+								</div>
+							</div>
+							</div>
 
 
 						<div class="form-group">
