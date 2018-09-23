@@ -1,5 +1,4 @@
 <?php
-
 include 'db_connect.php';
 $farming_type = $_POST['farming_type'];
 $companyName = $_POST['companyName'];
@@ -18,7 +17,6 @@ $BX_units = $_POST['BX_units'];
 $BX_duration = $_POST['BX_duration'];
 $query="INSERT INTO buyerenq(userid,category,farming_type,companyName,email,bankName,IFSC,accountNumber,deliveryAddress,gst,tan,pan,message) VALUES(2,'buyer','".$farming_type."','".$companyName."','".$email."','".$bankName."','".$ifsc."','".$accountNumber."','".$deliveryAddress."','".$gst."','".$tan."','".$pan."','".$message."')";
 mysqli_query($connection,$query);
-
 foreach ($BX_Item as $key => $value) {
   $item = $BX_Item[$key];
   $unit = $BX_units[$key];
@@ -27,5 +25,4 @@ foreach ($BX_Item as $key => $value) {
     $sql = "INSERT INTO buyerproduct(userid,category,item,unit,type,duration)  values(2,'buyer','".$item."','".$unit."','".$type."','".$duration."')";
      mysqli_query($connection,$sql);
 }
-
  ?>

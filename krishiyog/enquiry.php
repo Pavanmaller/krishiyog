@@ -1,6 +1,5 @@
 <?php
 session_start();
-
  ?>
 <!DOCTYPE HTML>
 <html>
@@ -59,18 +58,14 @@ function validate() {
 	if (!ifscChecker.test(ifsc)) {
 		$("#errorifsc").html("Invalid IFSC code");
 		document.getElementById('errorifsc').style.color="red";
-
 	}else {
 		$("#errorifsc").html("");
-
 	}
 	if (!accountNumberChecker.test(accountNumber)) {
 		$("#erroraccountNumber").html("Invalid Account Number");
 		document.getElementById('erroraccountNumber').style.color="red";
-
 	}else {
 		$("#erroraccountNumber").html("");
-
 	}
     if ( document.buyerForm.gst.value.length!=15) {
            document.buyerForm.gst.focus() ;
@@ -78,7 +73,6 @@ function validate() {
 					 document.getElementById('errorsgst').style.color="red";
         return false;
     }
-
 		if (document.buyerForm.tan.value.length!=10) {
            document.buyerForm.tan.focus() ;
 					 document.getElementById('errorstan').innerHTML="Enter tan with 10 digits";
@@ -100,7 +94,6 @@ function validate() {
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'UA-123909367-1');
 </script>
 
@@ -154,11 +147,11 @@ function validate() {
 				<div class="col-md-12 animate-box">
 					<h3>Buyer Form</h3>
 					<hr>
+
 						<?php
 						$_SESSION['category']="buyerdb";
 						$_SESSION['fname']="Rohan";
 						$_SESSION['lname']="Rohan";
-
 							if ($_SESSION['category'] == 'buyerdb') {
 								echo "<div class='row'>
 												<div class='col-md-4'>
@@ -206,10 +199,9 @@ function validate() {
 													Contact Number: ".$_SESSION['mobile']."
 												</div>
 											</div>
-
 								 ";
 							}
-							if ($_SESSION['category'] == 'medexpertdb') {
+							if ($_SESSION['category'] == 'medexperdivb') {
 								echo "<div class='row'>
 												<div class='col-md-4'>
 													Name: ".$_SESSION['fname']." ".$_SESSION['lname']."
@@ -233,17 +225,16 @@ function validate() {
 													Contact Number: ".$_SESSION['mobile']."
 												</div>
 											</div>
-
 								 ";
 							}
 						 ?>
 						<hr>
-					<form name="buyerForm" action="buyerEnqdb.php" method="post" onsubmit="return(validate())">
+					<form name="buyerForm" action="buyerEnqdb.php" method="post" onsubmit="return(validate())" style="padding:10px;">
 						<div class="row form-group">
 
-					 <div class="row form-group">
-							<div class="col-md-6">
-							<select name="farming_type" required>
+					 <div class="row form-group" style="text-align:center;">
+							<div class="col-md-6 col-md-offset-3" >
+							<select name="farming_type" class="form-control"  required>
 								<option selected disabled="disabled">Farming type</option>
  								<option value="Natural Farming">Natural Farming</option>
  						  	<option value="Group Organic Certified">Group Organic Certified</option>
@@ -313,28 +304,28 @@ function validate() {
 				</div>
 				<script type="text/javascript" src="js/script.js"></script>
 
-					<p>
-						<input type="button" value="Add Item" onClick="addRow('dataTable')" />
-						<input type="button" value="Remove Item(s)" onClick="deleteRow('dataTable')"  />
-						<p>(All acions apply only to entries with check marked check boxes only.)</p>
+					<p style="text-align:center;">
+						<input type="button" value="Add Item" class="btn btn-success" onClick="addRow('dataTable')" />
+						<input type="button" value="Remove Item(*)" class="btn btn-danger" onClick="deleteRow('dataTable')"  />
+
 					</p>
-								 <table id="dataTable" class="form" border="1">
-										<tbody>
+								 <table id="dataTable" class="form" >
+										<tbody >
 											<tr>
 												<p>
-							<td><input type="checkbox" required="required" name="chk[]" checked="checked" /></td>
+							<td><<input type="checkbox" required="required" name="chk[]" checked="checked" class="form-control" /></td>
 							<td>
-								<label>Item</label>
-								<input type="text" required="required" name="BX_Item[]">
+								<label></label>
+								<input type="text" placeholder="Item" required="required" class="form-control"name="BX_Item[]">
 							 </td>
-							 <td>
-								<label for="BX_units">Units</label>
-								<input type="text" required="required" class="small"  name="BX_units[]">
+							 <td >
+								<label for="BX_units"></label>
+								<input type="text" placeholder="Units" required="required" class="small form-control" name="BX_units[]">
 								 </td>
-							 <td>
-								<label for="BX_type">Measure</label>
-								<select id="BX_type" name="BX_type[]" required="required">
-									<option selected disabled="disabled">....</option>
+							 <td >
+								<label for="BX_type"></label>
+								<select id="BX_type" name="BX_type[]" class="form-control" required="required">
+									<option selected disabled="disabled">Measure</option>
 									<option value="Grams">Grams</option>
 									<option value="KG">KG</option>
 									<option value="Quintals">Quintals</option>
@@ -346,9 +337,9 @@ function validate() {
 								</select>
 							 </td>
 							 <td>
-								 <label for="">Duration</label>
-								 <select name="BX_duration[]" required>
-									 <option selected disabled="disabled" value="">....</option>
+								 <label for=""></label>
+								 <select name="BX_duration[]" class="form-control" required>
+									 <option selected disabled="disabled" value="">Duration</option>
 									 <option value="Per Day">Per Day</option>
 									 <option value="Per Month">Per Week</option>
 									 <option value="Per Month">Per Month</option>
@@ -358,18 +349,20 @@ function validate() {
 								</p>
 											</tr>
 											</tbody>
+
 									</table>
+                  <p style="text-align:center;">(*Only checked boxes will be removed or submitted.)</p>
 					<div class="clear"></div>
 							</fieldset>
 
 							<div class="form-group">
-								<label for="">Delivery address</label>
+								<label for=""></label>
 								<input type="text" placeholder="Delivery Address" class="form-control" name="deliveryAddress" value="">
 							</div>
 
 							<div class="row form-group">
 								<div class="col-md-12">
-									<label for="message">Message</label>
+									<label for="message"></label>
 									<textarea name="message" id="message" cols="30" rows="10"
 									class="form-control" placeholder="Tell us more about your products"></textarea>
 								</div>
@@ -377,8 +370,8 @@ function validate() {
 							</div>
 
 
-						<div class="form-group">
-							<input type="submit" value="Send Message" class="btn btn-primary">
+						<div class="form-group" style="text-align:center;">
+							<input type="submit" value="Send Enquiry" class="btn btn-primary">
 						</div>
 
 					</form>
@@ -395,9 +388,6 @@ function validate() {
 	<footer id="gtco-footer" class="gtco-brown" role="contentinfo" >
 		<div class="gtco-container">
 			<!--<div class="row row-pb-md">
-
-
-
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 					<ul class="gtco-footer-links">
 						<li><a href="#">Shop</a></li>
@@ -407,7 +397,6 @@ function validate() {
 						<li><a href="#">Held Desk</a></li>
 					</ul>
 				</div>
-
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 					<ul class="gtco-footer-links">
 						<li><a href="#">Find Designers</a></li>
@@ -422,9 +411,6 @@ function validate() {
 			<div class="row copyright">
 				<div class="col-md-12">
 					<!--<p class="pull-left">
-
-
-
 					</p> -->
 
 					<p>
@@ -456,18 +442,11 @@ function validate() {
 
 
 <script>
-
-
-
 var app = angular.module('add-row', []);
-
   app.controller('MainCtrl', function($scope) {
-
   //$scope.dataType = ['type1', 'type2', 'type'];
-
  $scope.columns = [{colId: 'col1', name:'',quantity:'', dataType:[]}];
  $scope.dataType = [
-
 {id: 1, dataTypeName: 'Grams'},
 {id: 2,  dataTypeName: 'KG'},
 {id: 3, dataTypeName: 'Quintals'},
@@ -475,15 +454,10 @@ var app = angular.module('add-row', []);
 {id: 5, dataTypeName: 'Litre'},
 {id: 6, dataTypeName: 'ml'}
 ];
-
-
-
   $scope.addNewColumn = function() {
     var newItemNo = $scope.columns.length+1;
     $scope.columns.push({'colId':'col'+newItemNo});
   };
-
-
   $scope.removeColumn = function(index) {
     // remove the row specified in index
     $scope.columns.splice( index, 1);
@@ -492,12 +466,7 @@ var app = angular.module('add-row', []);
       alert('no rec');
       $scope.columns.push = [{"colId":"col1"}];
     }
-
-
   };
-
-
-
 });
 </script>
 	<!-- jQuery -->
