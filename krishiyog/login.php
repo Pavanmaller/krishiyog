@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
    include 'db_connect.php';
    function Validate($data){
@@ -28,6 +29,12 @@
         $active = $row['id'];
         $count = mysqli_num_rows($result);
         $_SESSION['category']=$category;
+        $_SESSION['fname']=$row['firstName'];
+        $_SESSION['lname']=$row['lastName'];
+        $_SESSION['mobile']=$row['bMobNo'];
+        $_SESSION['address']=$row['addressBuyer'];
+        $_SESSION['pincode']=$row['zipcode'];
+
         if($count <= 1)
         {
            $_SESSION['login_user'] = $number;
@@ -44,6 +51,7 @@
         $active = $row['id'];
         $count = mysqli_num_rows($result);
         $_SESSION['category']=$category;
+
         if($count == 1)
         {
 
@@ -61,11 +69,15 @@
         $active = $row['id'];
         $count = mysqli_num_rows($result);
         $_SESSION['category']=$category;
+        $_SESSION['fname']=$row['firstName'];
+        $_SESSION['lname']=$row['lastName'];
+        $_SESSION['mobile']=$row['mbNo'];
+
         if($count == 1)
         {
 
            $_SESSION['login_user'] = $number;
-           header("Location: index.html");
+           header("Location: index.php");
         }
       }
       if($category == 'medexpertdb')
@@ -78,6 +90,11 @@
         $active = $row['id'];
         $count = mysqli_num_rows($result);
         $_SESSION['category']=$category;
+        $_SESSION['fname']=$row['firstName'];
+        $_SESSION['lname']=$row['lastName'];
+        $_SESSION['mobile']=$row['mbNo'];
+        $_SESSION['specialization']=$row['specialization'];
+
         if($count == 1)
         {
 
@@ -95,11 +112,16 @@
         $active = $row['id'];
         $count = mysqli_num_rows($result);
         $_SESSION['category']=$category;
+        $_SESSION['fname']=$row['firstName'];
+        $_SESSION['lname']=$row['lastName'];
+        $_SESSION['mobile']=$row['sMobNo'];
+        $_SESSION['address']=$row['addressSeller'];
+        $_SESSION['pincode']=$row['zipcode'];
         if($count == 1)
         {
 
            $_SESSION['login_user'] = $number;
-           header("Location: index.html");
+           header("Location: index.php");
         }
       }
       /*$result = mysqli_query($connection,$sql);
@@ -113,101 +135,83 @@
       {
 
          $_SESSION['login_user'] = $number;
-         header("Location: index.html");
+         header("Location: index.php");
       }*/
       if($count<=0)
       {
-         $error = "Your Login Name or Password is invalid";
+         $error = '<span style="color:red;text-align:center;">Your Login Name or Password is invalid';
       }
    }
 ?>
 
+<html lang="en" >
 
- <html lang="en">
-   <head>
-     <!-- <meta name="google-signin-scope" content="profile email">
-     <meta name="google-signin-client_id" content="1047018957941-c99a4imf38mmr0cf6d6l3e53kojti2fs.apps.googleusercontent.com">
-     <script src="https://apis.google.com/js/platform.js" async defer></script> -->
-
-   <style media="screen">
-   body {
-     background: url(grass.JPG) no-repeat center center fixed;
-     -webkit-background-size: cover;
-     -moz-background-size: cover;
-     -o-background-size: cover;
-     background-size: cover;
-   }
-
-   .form-control:focus {
-     border-color: green;
-     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(36, 109, 6, 0.6);
-   }
-   .check
-   {
-       opacity:0.5;
-   	color:#996;
-   }
-   </style>
-   <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
-   <!-- <script>
-     function onSignIn(googleUser) {
-       // Useful data for your client-side scripts:
-       var profile = googleUser.getBasicProfile();
-       console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-       console.log('Full Name: ' + profile.getName());
-       console.log('Given Name: ' + profile.getGivenName());
-       console.log('Family Name: ' + profile.getFamilyName());
-       console.log("Image URL: " + profile.getImageUrl());
-       console.log("Email: " + profile.getEmail());
-
-       // The ID token you need to pass to your backend:
-       var id_token = googleUser.getAuthResponse().id_token;
-       console.log("ID Token: " + id_token);
-     };
-   </script> -->
-
-
-    <meta charset="utf-8">
-    <title>Krishiyog | Login</title>
+<head>
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="card shadow container" style="width:32%;margin-top:50px;">
-      <div class="card-body">
-        <div class="card-title">
-        <h3>Login</h3>
-        </div>
-        <form  method="post" action="">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Contact Number</label>
-            <input type="number" name="number" class="form-control form-control-sm" id="number" aria-describedby="number" placeholder="Contact Number">
-            <!-- <small id="number" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control form-control-sm" id="password" placeholder="Password">
-          </div>
-          <div class="form-group">
-            <b>Farmer/Producer/Processor</b>
-            <input type="radio" class="form-control form-control-sm"name="category" value="sellerdb" required>
-            <b>Buyer/Consumer</b>
-            <input type="radio" class="form-control form-control-sm" name="category" value="buyerdb" required>
-            <b>Aggregator</b>
-            <input type="radio" class="form-control form-control-sm" name="category" value="aggregator"required >
-            <b>Community</b>
-            <input type="radio" class="form-control form-control-sm"name="category" value="communorg"required>
-            <b>Wellness Advisor</b>
-            <input type="radio" class="form-control form-control-sm" name="category" value="medexpertdb"required>
-            <!-- <small id="number" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-          </div>
-          <span><?php echo $error; ?></span>
-          <button type="submit" name="login" class="btn btn-success">Get-in</button>
-          <a href="signup2.php">Register</a>
-        </form>
-      </div>
-    </div>
+  <title>Login</title>
 
-  </body>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+
+      <link rel="stylesheet" href="css/login.css">
+
+
+</head>
+
+<body>
+
+    <div class="login-form col-sm-12 col-md-6 col-md-offset-4">
+    <form  method="post" action="">
+     <h1 >Login</h1>
+     <div class="form-group ">
+       <input type="number" name="number" class="form-control" aria-describedby="number" placeholder="Contact Number" id="number" required>
+       <i class="fa fa-user"></i>
+     </div>
+     <div class="form-group log-status">
+       <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+       <i class="fa fa-lock"></i>
+     </div>
+     <div class="form-group" style="text-align:center;">
+
+       <!--<input type="radio" class="form-control"name="category" value="sellerdb" required>Farmer/Producer/Processor<br>
+       <b>Buyer/Consumer</b>
+       <input type="radio" class="form-control form-control-sm" name="category" value="buyerdb" required>
+       <b>Aggregator</b>
+       <input type="radio" class="form-control form-control-sm" name="category" value="aggregator"required >
+       <b>Community</b>
+       <input type="radio" class="form-control form-control-sm"name="category" value="communorg"required>
+       <b>Wellness Advisor</b>
+       <input type="radio" class="form-control form-control-sm" name="category" value="medexpertdb"required>-->
+       <!-- <small id="number" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+       <select name="category">
+          <option class="form-control" value="sellerdb">Farmer/Producer/Processor</option>
+          <option class="form-control" value="buyerdb">Buyer/Consumer</option>
+          <option class="form-control" value="aggregator">Aggregator</option>
+          <option class="form-control" value="communorg">Community</option>
+          <option class="form-control" value="medexpertdb">Wellness Advisor</option>
+
+        </select>
+     </div>
+     <div style="text-align:center;">  <span><?php echo $error; ?></span></div>
+
+
+     <button type="submit" name="login" class="log-btn" >Log in</button>
+<p class="message">Not registered? <a href="signup2.php">Create an account</a></p>
+</form>
+   </div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+
+    <script  src="js/login.js"></script>
+
+
+
+
+</body>
+
 </html>
