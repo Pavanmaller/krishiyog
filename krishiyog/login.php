@@ -10,6 +10,9 @@
    session_start();
    $error='';
    $count=0;
+   if (isset($_SESSION['login_user'])) {
+     header("Location:index.php");
+   }
    if($_SERVER["REQUEST_METHOD"] == "POST")
    {
       // username and password sent from form
@@ -74,7 +77,7 @@
         $_SESSION['fname']=$row['firstName'];
         $_SESSION['lname']=$row['lastName'];
         $_SESSION['mobile']=$row['bMobNo'];
-        $_SESSION['address']=$row['addressBuyer'];
+
         if($count == 1)
         {
 
