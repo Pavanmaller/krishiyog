@@ -51,7 +51,9 @@
         $active = $row['id'];
         $count = mysqli_num_rows($result);
         $_SESSION['category']=$category;
-
+        $_SESSION['fname']=$row['firstName'];
+        $_SESSION['lname']=$row['lastName'];
+        $_SESSION['mobile']=$row['mbNo'];
         if($count == 1)
         {
 
@@ -71,8 +73,8 @@
         $_SESSION['category']=$category;
         $_SESSION['fname']=$row['firstName'];
         $_SESSION['lname']=$row['lastName'];
-        $_SESSION['mobile']=$row['mbNo'];
-
+        $_SESSION['mobile']=$row['bMobNo'];
+        $_SESSION['address']=$row['addressBuyer'];
         if($count == 1)
         {
 
