@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'loggedInCheck.php';
  ?>
 <!DOCTYPE HTML>
 <html>
@@ -149,23 +150,21 @@ function validate() {
 					<hr>
 
 						<?php
-						$_SESSION['category']="buyerdb";
-						$_SESSION['fname']="Rohan";
-						$_SESSION['lname']="Rohan";
+
 							if ($_SESSION['category'] == 'buyerdb') {
 								echo "<div class='row'>
-												<div class='col-md-4'>
+												<div class='col-md-6'>
 													Name: ".$_SESSION['fname']." ".$_SESSION['lname']."
 												</div>
-												<div class='col-md-4'>
+												<div class='col-md-6'>
 													Contact Number: ".$_SESSION['mobile']."
 												</div>
 											</div>
 											<div class='row'>
-															<div class='col-md-4'>
+															<div class='col-md-6'>
 																Address: ".$_SESSION['address']."
 															</div>
-															<div class='col-md-4'>
+															<div class='col-md-6'>
 																Pincode: ".$_SESSION['pincode']."
 															</div>
 														</div>
@@ -173,18 +172,18 @@ function validate() {
 							}
 							if ($_SESSION['category'] == 'sellerdb') {
 								echo "<div class='row'>
-												<div class='col-md-4'>
+												<div class='col-md-6'>
 													Name: ".$_SESSION['fname']." ".$_SESSION['lname']."
 												</div>
-												<div class='col-md-4'>
+												<div class='col-md-6'>
 													Contact Number: ".$_SESSION['mobile']."
 												</div>
 											</div>
 											<div class='row'>
-															<div class='col-md-4'>
+															<div class='col-md-6'>
 																Address: ".$_SESSION['address']."
 															</div>
-															<div class='col-md-4'>
+															<div class='col-md-6'>
 																Pincode: ".$_SESSION['pincode']."
 															</div>
 														</div>
@@ -192,10 +191,10 @@ function validate() {
 							}
 							if ($_SESSION['category'] == 'aggregator') {
 								echo "<div class='row'>
-												<div class='col-md-4'>
+												<div class='col-md-6'>
 													Name: ".$_SESSION['fname']." ".$_SESSION['lname']."
 												</div>
-												<div class='col-md-4'>
+												<div class='col-md-6'>
 													Contact Number: ".$_SESSION['mobile']."
 												</div>
 											</div>
@@ -203,14 +202,14 @@ function validate() {
 							}
 							if ($_SESSION['category'] == 'medexperdivb') {
 								echo "<div class='row'>
-												<div class='col-md-4'>
+												<div class='col-md-6'>
 													Name: ".$_SESSION['fname']." ".$_SESSION['lname']."
 												</div>
-												<div class='col-md-4'>
+												<div class='col-md-6'>
 													Contact Number: ".$_SESSION['mobile']."
 												</div>
 											</div>
-											<div class='col-md-4'>
+											<div class='col-md-6'>
 												Specialization: ".$_SESSION['specialization']."
 											</div>
 										</div>
@@ -218,10 +217,10 @@ function validate() {
 							}
 							if ($_SESSION['category'] == 'communorg') {
 								echo "<div class='row'>
-												<div class='col-md-4'>
+												<div class='col-md-6'>
 													Name: ".$_SESSION['fname']." ".$_SESSION['lname']."
 												</div>
-												<div class='col-md-4'>
+												<div class='col-md-6'>
 													Contact Number: ".$_SESSION['mobile']."
 												</div>
 											</div>
@@ -313,7 +312,7 @@ function validate() {
 										<tbody >
 											<tr>
 												<p>
-							<td><<input type="checkbox" required="required" name="chk[]" checked="checked" class="form-control" /></td>
+							<td><input type="checkbox" required="required" name="chk[]" checked="checked" style="height:20px;width:20px;" /></td>
 							<td>
 								<label></label>
 								<input type="text" placeholder="Item" required="required" class="form-control"name="BX_Item[]">
