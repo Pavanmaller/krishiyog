@@ -1,4 +1,10 @@
 <!DOCTYPE HTML>
+<?php
+session_start();
+if(!isset($_SESSION['login_user']));
+  //header("Location: login.php");//redirect to login page to secure the welcome page without login access.
+
+?>
 <html>
 	<head>
 	<meta charset="utf-8">
@@ -78,20 +84,34 @@ document.forms[0].submit();
 			<div class="gtco-container">
 				<div class="row">
 					<div class="col-xs-2">
-						<div id="gtco-logo"><a href="index.html"><img src="images/logo0.jpg" style="max-width:300px;max-height: 100px;margin-top:-15px"></img></a></div>
+						<div id="gtco-logo"><a href="index.php"><img src="images/logo0.jpg" style="max-width:300px;max-height: 100px;margin-top:-15px;margin-left:-30px"/></a></div>
 					</div>
-					<div class="col-xs-8 text-center menu-1">
+					<div class="col-xs-10 text-center menu-1">
 						<ul>
-						<!--	<li><a href="index.html"><b>Home</a></b></li> -->
-							<span class="icon">
-								<li><a class="active" href="index.html"><i class="icon-home"></i></a></li>
-							</span>
-							<li><a href="index.html#about?"><b>About</a></b></li>
-							<li><a href="index.html#natural farming?"><b>Natural Farming</a></b></li>
-							<li><a href="resource.html"><b>RESOURCES</a></b></li>
-							<li><a href="contact.php"><b>Contact us</a></b></li>
 
+					<!--	<li ><a class="about-mob"  ><b>About</a></b></li> -->
 
+						<span class="icon">
+							<li><a class="active" href="index.php"><i class="icon-home"></i></a></li>
+						</span>
+							<li><a href="about.php"><b>About</a></b></li>
+							<li><a href="index.php#natural farming?"><b>Natural Farming</a></b></li>
+							<li><a href="resource.php"><b>Resources</a></b></li>
+	            <li><a href="contact.php"><b>Contact us</a></b></li>
+							<li><?php if(!isset($_SESSION['login_user']) && !isset($_SESSION['category']))
+										{
+
+											echo "<li><a href='login.php'><b>LOGIN</b></a></li>";
+											echo "<li><a href='signup2.php'><b>REGISTER</b></a></li>";
+										}
+										else if(isset($_SESSION['login_user']) && isset($_SESSION['category']))
+										{
+
+											echo "<li><a href='logout.php'><b>Logout</b></a></li>";
+
+											echo "<li><b>Welcome ".$_SESSION['fname']."!!</b></li>";
+										}
+							?></li>
 							<!--<li class="has-dropdown">
 								<a href="#">Services</a>
 								<ul class="dropdown">
@@ -109,16 +129,30 @@ document.forms[0].submit();
 									<li><a href="#">jQuery</a></li>
 								</ul>
 							</li>-->
-							<!--<li><a href="contact.html">Contact</a></li>-->
+							<!--<li><a href="contact.php">Contact</a></li>-->
+				<!--<li class="has-dropdown">
+								<a href="services.html">Services</a>
+								<ul class="dropdown">
+									<li><a href="#">Web Design</a></li>
+									<li><a href="#">eCommerce</a></li>
+									<li><a href="#">Branding</a></li>
+									<li><a href="#">API</a></li>
+								</ul>
+							</li>-->
+	            <!--<li class="has-dropdown">
+	              <a ><b>Account</b></a>
+	              <ul class="dropdown">
+
+	              </ul>
+	            </li> -->
 						</ul>
-					</div>
-					<div class="col-xs-2 text-right hidden-xs menu-2">
-						<ul>
-							<li><a href="signup2.php"><b>Register<b></a></li>
-						</ul>
-					</div>
+
+
+
 
 				</div>
+
+
 
 			</div>
 		</nav>
@@ -131,7 +165,7 @@ document.forms[0].submit();
 			<div class="row">
 				<div class="col-md-6 animate-box">
 					<h3>Get In Touch</h3>
-					<form action="#" method="post" onsubmit="mailIt(); return false;" enctype="text/plain">
+					<form  method="post" action="feedbackProcess.php" >
 						<div class="row form-group">
 							<div class="col-md-6">
 								<label for="fname">First Name</label>
@@ -146,7 +180,7 @@ document.forms[0].submit();
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label for="email">Your Email</label>
-								<input type="email" id="email" name="email" class="form-control required placeholder="Your email address">
+								<input type="email" id="email" name="email"class="form-control " required placeholder="Your email address">
 							</div>
 						</div>
 
@@ -236,7 +270,7 @@ document.forms[0].submit();
 							</center>
 						</ul>
 					</p>
-					<small><p><center>Copyright &copy; 2018. &nbsp; Nisarga Krishiyog Ventures OPC Pvt Limited.&nbsp;&nbsp;All Rights Reserved  <br> &nbsp;&nbsp;   <a href="privacy.html">Privacy Policy</a> &nbsp;&nbsp; |&nbsp;&nbsp; <a href="terms.html">Terms of services</a>&nbsp;&nbsp;   |&nbsp;&nbsp;   <a href="refund.html">Refunds &amp; Returns&nbsp;&nbsp; </a></center></p></small>
+					<small><p><center>Copyright &copy; 2018. &nbsp; Nisarga Krishiyog Ventures OPC Pvt Limited.&nbsp;&nbsp;All Rights Reserved  <br> &nbsp;&nbsp;   <a href="privacy.php">Privacy Policy</a> &nbsp;&nbsp; |&nbsp;&nbsp; <a href="terms.php">Terms of services</a>&nbsp;&nbsp;   |&nbsp;&nbsp;   <a href="refund.php">Refunds &amp; Returns&nbsp;&nbsp; </a></center></p></small>
 
 				</div>
 			</div>
