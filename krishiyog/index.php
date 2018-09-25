@@ -142,7 +142,7 @@ if(!isset($_SESSION['login_user']));
 				<div class="col-xs-2">
 					<div id="gtco-logo"><a href="index.php"><img src="images/logo0.jpg" style="max-width:300px;max-height: 100px;margin-top:-15px;margin-left:-30px"/></a></div>
 				</div>
-				<div class="col-xs-8 text-center menu-1">
+				<div class="col-xs-10 text-center menu-1">
 					<ul>
 
 				<!--	<li ><a class="about-mob"  ><b>About</a></b></li> -->
@@ -154,7 +154,20 @@ if(!isset($_SESSION['login_user']));
 						<li><a class="nat-farm"><b>Natural Farming</a></b></li>
 						<li><a href="resource.php"><b>Resources</a></b></li>
             <li><a href="contact.php"><b>Contact us</a></b></li>
+						<li><?php if(!isset($_SESSION['login_user']) && !isset($_SESSION['category']))
+									{
 
+										echo "<li><a href='login.php'><b>LOGIN</b></a></li>";
+										echo "<li><a href='signup2.php'><b>REGISTER</b></a></li>";
+									}
+									else if(isset($_SESSION['login_user']) && isset($_SESSION['category']))
+									{
+
+										echo "<li><a href='logout.php'><b>Logout</b></a></li>";
+
+										echo "<li><b>Welcome ".$_SESSION['fname']."!!</b></li>";
+									}
+						?></li>
 						<!--<li class="has-dropdown">
 							<a href="#">Services</a>
 							<ul class="dropdown">
@@ -173,32 +186,28 @@ if(!isset($_SESSION['login_user']));
 							</ul>
 						</li>-->
 						<!--<li><a href="contact.php">Contact</a></li>-->
-					</ul>
-				</div>
-        <div class="col-xs-2 text-right menu-1">
-					<ul>
-
-            <li class="has-dropdown">
-              <a>Account</a>
+			<!--<li class="has-dropdown">
+							<a href="services.html">Services</a>
+							<ul class="dropdown">
+								<li><a href="#">Web Design</a></li>
+								<li><a href="#">eCommerce</a></li>
+								<li><a href="#">Branding</a></li>
+								<li><a href="#">API</a></li>
+							</ul>
+						</li>-->
+          <!--  <li class="has-dropdown">  //For Drop down menu
+              <a ><b>Account</b></a>
               <ul class="dropdown">
-                <?php if(!isset($_SESSION['login_user']) && !isset($_SESSION['category']))
-            					{
-            						echo "<li><a href='login.php'>LOGIN</a></li>";
-            					}
-            					if(isset($_SESSION['login_user']) && isset($_SESSION['category']))
-            					{
-            					 echo "<li>Welcome ".$_SESSION['fname']."</li>";
-            						echo "<li><a href='logout.php'>Logout</li>";
-            					}
-            		?>
+
               </ul>
-            </li>
-					</ul>
-				</div>
+            </li>  -->
+ 					</ul>
+
 
 
 
 			</div>
+
 
 
 		</div>
@@ -607,7 +616,7 @@ We draw our inspiration by adopting and promoting  Zero Budget Natural Farming (
 								</center>
 							</ul>
 						</p>
-							<small><p><center>Copyright &copy; 2018. &nbsp; Nisarga Krishiyog Ventures OPC Pvt Limited.&nbsp;&nbsp;All Rights Reserved  <br> &nbsp;&nbsp;   <a href="privacy.html">Privacy Policy</a> &nbsp;&nbsp; |&nbsp;&nbsp; <a href="terms.html">Terms of services</a>&nbsp;&nbsp;   |&nbsp;&nbsp;   <a href="refund.html">Refunds &amp; Returns&nbsp;&nbsp; </a></center></p></small>
+							<small><p><center>Copyright &copy; 2018. &nbsp; Nisarga Krishiyog Ventures OPC Pvt Limited.&nbsp;&nbsp;All Rights Reserved  <br> &nbsp;&nbsp;   <a href="privacy.php">Privacy Policy</a> &nbsp;&nbsp; |&nbsp;&nbsp; <a href="terms.php">Terms of services</a>&nbsp;&nbsp;   |&nbsp;&nbsp;   <a href="refund.php">Refunds &amp; Returns&nbsp;&nbsp; </a></center></p></small>
 
 
 					</div>
