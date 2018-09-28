@@ -13,16 +13,35 @@
   <script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script> -->
 </head>
 <link rel="stylesheet" href="css/signup.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style media="screen">
+.the-legend {
+    border-style: none;
+    border-width: 0;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
+    width: auto;
+    padding: 0 10px;
+    border: 1px solid rgb(14,146,3);
+}
+.the-fieldset {
+    border: 1px solid rgb(14,146,3);
+    padding: 10px;
+}
+</style>
 <body>
 
   <div class="card container shadow form-bod" >
     <div class="card-body">
-        <h5 style="text-align:center;color:rgb(14,146,3)" class="card-title"><b>Welcome to our Beta Programme</b></h5>
+      <a href="index.php">
+<span style="float:left;color:rgb(14,146,3)"><i class="fa fa-home"></i>Home</span></a>
+        <h5 style="text-align:center;color:rgb(14,146,3);margin-right:50px;" class="card-title"><b>Welcome to Krishiyog, Let's create your account</b></h5>
       <form style="width:100%" class="form" id="form" method="post" action="signupProcess.php">
         <b><div id="headingChange2"></div></b>
         <div  id="headingChange">
-        <label for="" style="color:rgb(14,146,3)"><b>Select your category:</b></label>
+          <fieldset class="the-fieldset">
+            <legend align="center" style="color:rgb(14,146,3);font-size:15px;;" class="the-legend"><b>Choose your profile:</b></legend>
       <div class="row">
 
 
@@ -645,6 +664,7 @@
 
         <!-- <button type="submit" class="btn btn-success" id="submitBtn" onclick="return Validate()" disabled>Continue</button> -->
       </form>
+    </fieldset>
 
     </div>
 </body>
