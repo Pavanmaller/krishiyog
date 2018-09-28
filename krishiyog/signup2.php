@@ -36,7 +36,8 @@
     <div class="card-body">
       <a href="index.php">
 <span style="float:left;color:rgb(14,146,3)"><i class="fa fa-home"></i>Home</span></a>
-        <h5 style="text-align:center;color:rgb(14,146,3);margin-right:50px;" class="card-title"><b>Welcome to Krishiyog, Let's create your account</b></h5>
+        <h5 style="text-align:center;color:rgb(14,146,3);margin-right:50px;" class="card-title"><b>Welcome to Krishiyog</b></h5>
+        <h6 style="text-align:center;color:rgb(14,146,3);"><b>Let's create your account</b></h6>
       <form style="width:100%" class="form" id="form" method="post" action="signupProcess.php">
         <b><div id="headingChange2"></div></b>
         <div  id="headingChange">
