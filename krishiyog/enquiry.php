@@ -105,50 +105,85 @@ function validate() {
 
 	</head>
 	<body>
+    <nav class="gtco-nav" role="navigation">
+  		<div class="gtco-container">
+  			<div class="row">
+  				<div class="col-xs-2">
+  					<div id="gtco-logo"><a href="index.php"><img src="images/logo0.jpg" style="max-width:300px;max-height: 100px;margin-top:-15px;margin-left:-30px"/></a></div>
+  				</div>
+  				<div class="col-xs-10 text-center menu-1">
+  					<ul>
 
-	<div class="gtco-loader"></div>
+  				<!--	<li ><a class="about-mob"  ><b>About</a></b></li> -->
 
-	<div id="page">
-		<nav class="gtco-nav" role="navigation">
-			<div class="gtco-container">
-				<div class="row">
-					<div class="col-xs-2">
-						<div id="gtco-logo"><a href="index.html"><img src="images/logo0.jpg" style="max-width:300px;max-height: 100px;margin-top:-15px"></img></a></div>
-					</div>
-					<div class="col-xs-8 text-center menu-1">
-						<ul>
-						<!--	<li><a href="index.html"><b>Home</a></b></li> -->
-							<span class="icon">
-								<li><a class="active" href="index.html"><i class="icon-home"></i></a></li>
-							</span>
-							<li><a href="index.html#about?"><b>About</a></b></li>
-							<li><a href="index.html#natural farming?"><b>Natural Farming</a></b></li>
-							<li><a href="resource.html"><b>RESOURCES</a></b></li>
-							<li><a href="contact.php"><b>Contact us</a></b></li>
+  					<span class="icon">
+  						<li><a class="active" href="index.php"><i class="icon-home"></i></a></li>
+  					</span>
+  						<li><a href="about.php"><b>About</a></b></li>
+  						<li><a class="nat-farm"><b>Natural Farming</a></b></li>
+  						<li><a href="resource.php"><b>Resources</a></b></li>
+              <li><a href="contact.php"><b>Contact us</a></b></li>
+  						<li><?php if(!isset($_SESSION['login_user']) && !isset($_SESSION['category']))
+  									{
+
+  										echo "<li><a href='login.php'><b>LOGIN</b></a></li>";
+  										echo "<li><a href='signup2.php'><b>REGISTER</b></a></li>";
+  									}
+  									else if(isset($_SESSION['login_user']) && isset($_SESSION['category']))
+  									{
+
+  										echo "<li><a href='logout.php'><b>Logout</b></a></li>";
+
+  										echo "<li><b>Welcome ".$_SESSION['fname']."!!</b></li>";
+  									}
+  						?></li>
+  						<!--<li class="has-dropdown">
+  							<a href="#">Services</a>
+  							<ul class="dropdown">
+  								<li><a href="#">Shop</a></li>
+  								<li><a href="#">Discussion forum</a></li>
+  								<li><a href="#">Sell/Support</a></li>
+  							</ul>
+  						</li>-->
+  						<!--<li class="has-dropdown">
+  							<a href="#">Tools</a>
+  							<ul class="dropdown">
+  								<li><a href="#">HTML5</a></li>
+  								<li><a href="#">CSS3</a></li>
+  								<li><a href="#">Sass</a></li>
+  								<li><a href="#">jQuery</a></li>
+  							</ul>
+  						</li>-->
+  						<!--<li><a href="contact.php">Contact</a></li>-->
+  			<!--<li class="has-dropdown">
+  							<a href="services.html">Services</a>
+  							<ul class="dropdown">
+  								<li><a href="#">Web Design</a></li>
+  								<li><a href="#">eCommerce</a></li>
+  								<li><a href="#">Branding</a></li>
+  								<li><a href="#">API</a></li>
+  							</ul>
+  						</li>-->
+            <!--  <li class="has-dropdown">  //For Drop down menu
+                <a ><b>Account</b></a>
+                <ul class="dropdown">
+
+                </ul>
+              </li>  -->
+   					</ul>
 
 
-						</ul>
-					</div>
-					<div class="col-xs-2 text-right hidden-xs menu-2">
-						<ul>
-							<li><a href="signup2.php"><b>Register<b></a></li>
-						</ul>
-					</div>
 
-				</div>
 
-			</div>
-		</nav>
+  			</div>
 
-<div style="padding-top:100px;"></div>
 
-	<div class="gtco-section">
-		<div class="gtco-container">
-			<div class="row">
-				<div class="col-md-12 animate-box">
-					<h3>Buyer Form</h3>
-					<hr>
 
+  		</div>
+  	</nav>
+
+<div style="margin-top:150px;margin-left:30px;margin-right:30px;">
+  <div><h3>Buyer Enquiry Form</h3></div>
 						<?php
 
 							if ($_SESSION['category'] == 'buyerdb') {
@@ -227,8 +262,9 @@ function validate() {
 								 ";
 							}
 						 ?>
+           </div>
 						<hr>
-					<form name="buyerForm" action="buyerEnqdb.php" method="post" onsubmit="return(validate())" style="padding:10px;">
+					<form name="buyerForm" action="buyerEnqdb.php" onsubmit="return(validate())" method="post" style="padding:10px;margin-left:30px;margin-right:30px;">
 						<div class="row form-group">
 
 					 <div class="row form-group" style="text-align:center;">
@@ -308,22 +344,22 @@ function validate() {
 						<input type="button" value="Remove Item(*)" class="btn btn-danger" onClick="deleteRow('dataTable')"  />
 
 					</p>
-								 <table id="dataTable" class="form" >
+								 <table id="dataTable" >
 										<tbody >
 											<tr>
 												<p>
 							<td><input type="checkbox" required="required" name="chk[]" checked="checked" style="height:20px;width:20px;" /></td>
 							<td>
 								<label></label>
-								<input type="text" placeholder="Item" required="required" class="form-control"name="BX_Item[]">
+								<input type="text" placeholder="Item" class="form-control" required="required" name="BX_Item[]">
 							 </td>
 							 <td >
 								<label for="BX_units"></label>
-								<input type="text" placeholder="Units" required="required" class="small form-control" name="BX_units[]">
+								<input type="text" placeholder="Units" class="form-control" required="required" name="BX_units[]">
 								 </td>
 							 <td >
 								<label for="BX_type"></label>
-								<select id="BX_type" name="BX_type[]" class="form-control" required="required">
+								<select id="BX_type" name="BX_type[]" class="form-control"  required="required">
 									<option selected disabled="disabled">Measure</option>
 									<option value="Grams">Grams</option>
 									<option value="KG">KG</option>
@@ -337,7 +373,7 @@ function validate() {
 							 </td>
 							 <td>
 								 <label for=""></label>
-								 <select name="BX_duration[]" class="form-control" required>
+								 <select name="BX_duration[]" class="form-control"  required>
 									 <option selected disabled="disabled" value="">Duration</option>
 									 <option value="Per Day">Per Day</option>
 									 <option value="Per Month">Per Week</option>
@@ -374,6 +410,7 @@ function validate() {
 						</div>
 
 					</form>
+
 				</div>
 
 			</div>
@@ -476,7 +513,7 @@ var app = angular.module('add-row', []);
 	<script src="js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
 	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Carousel -->form-group
+	<!-- Carousel -->
 	<script src="js/owl.carousel.min.js"></script>
 	<!-- countTo -->
 	<script src="js/jquery.countTo.js"></script>

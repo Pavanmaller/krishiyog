@@ -2,7 +2,7 @@
 <head>
   <title>Krishiyog | Signup</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="signup.css">
+  <link rel="shortcut icon" href="http://www.krishiyog.com/images/logo0.jpg" type="image/x-icon" />
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -12,104 +12,48 @@
   <!-- <meta name="google-signin-client_id" content="1047018957941-c99a4imf38mmr0cf6d6l3e53kojti2fs.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script> -->
 </head>
-<style media="screen">
-body {
-  font-family: 'Poppins';
-  background: url(grass.JPG) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.form-control:focus {
-  border-color: green;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(36, 109, 6, 0.6);
-}
-.Invalid{
-  visibility: hidden;
-  color: Red;
-}
-.check
-{
-    opacity:0.5;
-	color:#996;
-}
-input[type="radio"]:checked{
-    visibility:hidden;
-}
-input[type="radio"]{
-    visibility:hidden;
-}
-.box{
-    margin-bottom:2px;
-}
-.btnsize{
-    width:100px;
-    font-size:15px;
-
-}
-  .shadow {
-box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);    transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.form-bod{
-   width:80%;
-    margin-top:10px;
-    background-color: rgb(206,246,158)
-}
-@media screen and (max-width:768px){
-  .form-bod{
-    width:100%;
-    margin-top:0px;
-
-  }
-}
-.required{
-  content:"*";
-    color:red;
-}
-</style>
+<link rel="stylesheet" href="css/signup.css">
 
 <body>
 
   <div class="card container shadow form-bod" >
     <div class="card-body">
-        <h5 style="text-align:center" class="card-title"><b>Welcome to our Beta Programme</b></h5>
+        <h5 style="text-align:center;color:rgb(14,146,3)" class="card-title"><b>Welcome to our Beta Programme</b></h5>
       <form style="width:100%" class="form" id="form" method="post" action="signupProcess.php">
         <b><div id="headingChange2"></div></b>
         <div  id="headingChange">
-        <label for=""><b>Select your category:</b></label>
+        <label for="" style="color:rgb(14,146,3)"><b>Select your category:</b></label>
       <div class="row">
 
 
-        <div class="col-md-4 col-sm">
-          <div class="form-group">
-            <div class="col box"><label class="" style="padding:0px;"><img src="producers.jpg" style="height:150px;width:200px;" alt="..." class="img-thumbnail img-check" height="150" width="150"><input type="radio" name="typeReg" value="2" id="typeReg" class="hidden" autocomplete="off"></label><label style="font-size:13px;margin-left:10px;">Farmer/Producer/Processor</label></div>
+        <div class="col-md-4 col-sm col-xs-1" align="center">
+          <div class="form-group" >
+            <div class="col box"><label class="" style="padding:0px;"><img src="producers.jpg" style="height:150px;width:200px;background-color:rgb(43,196,30)" alt="..." class="img-thumbnail img-check" height="150" width="150"><input type="radio" name="typeReg" value="2" id="typeReg" class="hidden" autocomplete="off"></label><label style="font-size:13px;margin-left:-20px;">Farmer/Producer/Processor</label></div>
           </div>
         </div>
-        <div class="col-md-4 col-sm">
+        <div class="col-md-4 col-sm col-xs-1" align="center" >
           <div class="form-group">
-            <div class="col box"><label class="" style="padding:0px;"><img src="consumers.jpg" style="height:150px;width:200px;" alt="..." class="img-thumbnail img-check" height="150" width="150"><input type="radio" name="typeReg" value="1" id="typeReg" class="hidden" autocomplete="off"></label><label style="font-size:13px;margin-left:44px;">Buyer/Consumer</label></div>
+            <div class="col box" ><label class="" style="padding:0px;"><img src="consumers.jpg" style="height:150px;width:200px;background-color:rgb(43,196,30)" alt="..." class="img-thumbnail img-check" height="150" width="150"><input type="radio" name="typeReg" value="1" id="typeReg" class="hidden" autocomplete="off"></label><label style="font-size:13px;margin-left:-5px;">Buyer/Consumer</label></div>
           </div>
         </div>
-        <div class="col-md-4 col-sm">
+        <div class="col-md-4 col-sm col-xs-1" align="center">
           <div class="form-group">
-            <div class="col box"><label class="" style="padding:0px;"><img src="aggregators.jpeg" style="height:150px;width:200px;" alt="aggregator" class="img-thumbnail img-check" height="170" width="170"><input type="radio" name="typeReg" value="5" id="typeReg" class="hidden" autocomplete="off"></label><br><label style="font-size:13px;margin-left:55px;">Aggregator</label></div>
+            <div class="col box"><label class="" style="padding:0px;"><img src="aggregators.jpeg" style="height:150px;width:200px;background-color:rgb(43,196,30)" alt="aggregator" class="img-thumbnail img-check" height="170" width="170"><input type="radio" name="typeReg" value="5" id="typeReg" class="hidden" autocomplete="off"></label><br><label style="font-size:13px;margin-left:-10px;">Aggregator</label></div>
           </div>
         </div>
       </div>
         <div class="row">
           <div class="col-md-2"></div>
-        <div class="col-md-4 col-sm">
+        <div class="col-md-4 col-sm col-xs-1" align="center">
           <div class="form-group">
-            <div class="col box"><label class="" style="padding:0px;"><img src="community supporters.jpeg" style="height:150px;width:200px;" alt="..." class="img-thumbnail img-check" height="150" width="150"><input type="radio" name="typeReg" value="4" id="typeReg" class="hidden" autocomplete="off"></label><br><label style="font-size:13px;margin-left:55px;">Community</label></div>
+            <div class="col box"><label class="" style="padding:0px;"><img src="community supporters.jpeg" style="height:150px;width:200px;background-color:rgb(43,196,30)" alt="..." class="img-thumbnail img-check" height="150" width="150"><input type="radio" name="typeReg" value="4" id="typeReg" class="hidden" autocomplete="off"></label><br><label style="font-size:13px;margin-left:-10px;">Community</label></div>
           </div>
         </div>
 
 
-        <div class="col-md-4 col-sm">
+        <div class="col-md-4 col-sm col-xs-1" align="center">
           <div class="form-group" >
-            <div class="col box" style="float:center;"><label class=" " ><img src="wellness advisor.jpeg" style="height:150px;width:200px;" alt="..." class="img-thumbnail img-check" height="200" width="200" ><input type="radio" name="typeReg" value="3" id="typeReg" class="hidden" autocomplete="off"></label><br><label style="font-size:13px;margin-left:40px;">Wellness Advisor</label></div>
+            <div class="col box" style="float:center;"><label class=" " ><img src="wellness advisor.jpeg" style="height:150px;width:200px;background-color:rgb(43,196,30)" alt="..." class="img-thumbnail img-check" height="200" width="200" ><input type="radio" name="typeReg" value="3" id="typeReg" class="hidden" autocomplete="off"></label><br><label style="font-size:13px;margin-left:10px;">Wellness Advisor</label></div>
           </div>
         </div>
         </div>
@@ -241,7 +185,6 @@ box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 
                       <label for="inputStateSell">State<span class="required">*</span></label>
                       <input type="text" class="form-control form-control-sm" name="ownStateSell" id="ownState" placeholder="Karnataka">
                       <div class="Invalid invalidState">
-
                       </div>
                     </div>
                     <div class="form-group">
@@ -252,7 +195,6 @@ box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 
                       <label for="ownPinCodeSell">Pincode<span class="required">*</span></label>
                       <input type="number" maxlength="6" size="6" class="form-control form-control-sm" name="ownPinCodeSell" id="ownPinCode" placeholder="530068">
                       <div class="Invalid invalidPincode">
-
                       </div>
                     </div>
               <button type="button" class="btn btn-success btnsize" id="nextstep2" name="button" style="float:right;">Next</button>
@@ -708,395 +650,8 @@ box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 
 </body>
 
 </html>
-<script type="text/javascript">
-  seller = $("#seller").detach();
-  buyer = $("#buyer").detach();
-  aggregator = $("#aggregator").detach();
+<script type="text/javascript" src="js/signupJavaScript.js">
 
-  medicalExp = $("#medicalExp").detach();
-  communOrg = $("#communOrg").detach();
-  passwordDiv = $("#passwordDiv").detach();
-  $("input[type=radio][name=typeReg]").on("click", function() {
-    if ($(this).val() == 0) {
-      $("#seller").detach();
-      $("#buyer").detach();
-      $("#medicalExp").detach();
-      $("#communOrg").detach();
-      // $("#passwordDiv").detach();
-      $("#submitBtn").attr("disabled", true);
-    }
-    if ($(this).val() == 1) {
-
-      $("#headingChange").hide();
-      $("#headingChange2").html("Buyer Details");
-      $("#parent").html(buyer);
-      $("#step2").hide();
-      $("#step3").hide();
-      $("#submitBtn").attr("disabled",true);
-      $("#contact").on("change",function(){
-        contact=$("#contact").val();
-        $.post("duplicationCheck.php",
-        {
-        contact:contact
-      },
-      function(data, status){
-
-        if (data!='') {
-          alert("Account already exists");
-          // $(".invalidContact").css('visibility', 'visible');
-          // $(".invalidContact").html("Contact number already Exist");
-          $("#submitBtn").attr("disabled",true);
-          $("#nextstep1").attr("disabled",true);
-
-        }else{
-          // $(".invalidContact").html("");
-          $("#submitBtn").attr("disabled",false);
-          $("#nextstep1").attr("disabled",false);
-
-        }
-
-      });
-      });
-      $("#prevbtn").on("click",function(){
-        window.location.replace("signup2.php");
-      });
-      $("#nextstep1").on("click",function () {
-
-        if($("#firstName").val()==''){
-          $(".invalidFirstName").css('visibility', 'visible');
-        }else if ($("#contact").val()=='' || $("#contact").val().length<10 || $("#contact").val().length>10) {
-          $(".invalidContact").css('visibility', 'visible');
-          $(".invalidContact").html("Enter 10 Digit Contact number("+$("#contact").val().length+" provided)");
-
-        }else if($("#lastName").val()==''){
-          $(".invalidLastName").css('visibility', 'visible');
-        }else if (!Validate()) {
-
-        }else if($("#password").val()=='' || $("#password").val().length<8 ){
-          $(".invalidPassword").css('visibility', 'visible');
-          $(".invalidPassword").html("Enter a valid password using above rules");
-        }
-        else{
-          $("#step1").hide();
-          $("#step2").show();
-        }
-      });
-      $("#prevbtn").on("click",function () {
-        $("#step1").show();
-        $("#step2").hide();
-      });
-      $("#nextstep2").on("click",function () {
-        if ($("#typeBuyer").val()==0) {
-          $(".invalidType").css('visibility', 'visible');
-          $(".invalidType").html("Choose a seller type");
-        }else if ($("#ownPlaces").val()=='') {
-          $(".invalidAddress").css('visibility', 'visible');
-          $(".invalidAddress").html("Please enter your address");
-        }else if ($("#ownCity").val()=='') {
-          $(".invalidCity").css('visibility', 'visible');
-          $(".invalidCity").html("Your city is required");
-        }else if ($("#ownState").val()=='') {
-          $(".invalidState").css('visibility', 'visible');
-          $(".invalidState").html("Your state is required");
-        }else if ($("#ownPinCode").val()=='') {
-          $(".invalidPincode").css('visibility', 'visible');
-          $(".invalidPincode").html("Your Pincode is required");
-        }else {
-          $("#submitBtn").attr("disabled",false);
-
-          $("#step2").hide();
-          $("#step3").show();
-        }
-      });
-      $("#prevstep2").on("click",function(){
-        $("#step2").hide();
-        $("#step1").show();
-      });
-      $("#prevstep3").on("click",function(){
-        $("#step3").hide();
-        $("#step2").show();
-      });
-      // $("#passwordParent").html(passwordDiv);
-      $("#submitBtn").attr("disabled", false);
-      $.getScript("signup.js",function () {
-        var places = new google.maps.places.Autocomplete(document.getElementById('ownPlaces'));
-
-
-      });
-      // $("#passwordParent").html(passwordDiv);
-      $("#submitBtn").attr("disabled", false);
-    }
-    if ($(this).val() == 5) {
-
-      $("#headingChange").hide();
-      $("#headingChange2").html("Aggregator details");
-      $("#parent").html(aggregator);
-      $("#step2").hide();
-      $("#step3").hide();
-      $("#submitBtn").attr("disabled",true);
-
-      $("#contact").on("change",function(){
-        contact=$("#contact").val();
-        $.post("duplicationCheck.php",
-        {
-        contact:contact
-      },
-      function(data, status){
-
-        if (data!='') {
-          alert("Account already exists");
-          // $(".invalidContact").css('visibility', 'visible');
-          // $(".invalidContact").html("Contact number already Exist");
-          $("#submitBtn").attr("disabled",true);
-          $("#nextstep1").attr("disabled",true);
-
-        }else{
-          // $(".invalidContact").html("");
-          $("#submitBtn").attr("disabled",false);
-          $("#nextstep1").attr("disabled",false);
-
-        }
-
-      });
-      });
-      $("#prevbtn").on("click",function(){
-        window.location.replace("signup2.php");
-      });
-      $("#nextstep1").on("click",function () {
-        if($("#firstName").val()==''){
-          $(".invalidFirstName").css('visibility', 'visible');
-        }else if ($("#contact").val()=='' || $("#contact").val().length<10 || $("#contact").val().length>10) {
-          $(".invalidContact").css('visibility', 'visible');
-          $(".invalidContact").html("Enter 10 Digit Contact number("+$("#contact").val().length+" provided)");
-
-        }else if($("#lastName").val()==''){
-          $(".invalidLastName").css('visibility', 'visible');
-        }else if (!Validate()) {
-
-        }else if($("#password").val()=='' || $("#password").val().length<8 ){
-          $(".invalidPassword").css('visibility', 'visible');
-          $(".invalidPassword").html("Enter a valid password using above rules");
-        }
-        else{
-          $("#step1").hide();
-          $("#step2").show();
-        }
-      });
-      $("#prevbtn").on("click",function () {
-        $("#step1").show();
-        $("#step2").hide();
-      });
-      $("#nextstep2").on("click",function () {
-        if ($("#typeBuyer").val()==0) {
-          $(".invalidType").css('visibility', 'visible');
-          $(".invalidType").html("Choose a Business type");
-        }else if ($("#ownPlaces").val()=='') {
-          $(".invalidAddress").css('visibility', 'visible');
-          $(".invalidAddress").html("Please enter your address");
-        }else if ($("#ownCity").val()=='') {
-          $(".invalidCity").css('visibility', 'visible');
-          $(".invalidCity").html("Your city is required");
-        }else if ($("#ownState").val()=='') {
-          $(".invalidState").css('visibility', 'visible');
-          $(".invalidState").html("Your state is required");
-        }else if ($("#ownPinCode").val()=='') {
-          $(".invalidPincode").css('visibility', 'visible');
-          $(".invalidPincode").html("Your Pincode is required");
-        }else {
-          $("#submitBtn").attr("disabled",false);
-
-          $("#step2").hide();
-          $("#step3").show();
-        }
-      });
-      $("#prevstep2").on("click",function(){
-        $("#step2").hide();
-        $("#step1").show();
-      });
-      $("#prevstep3").on("click",function(){
-        $("#step3").hide();
-        $("#step2").show();
-      });
-      // $("#passwordParent").html(passwordDiv);
-      $("#submitBtn").attr("disabled", false);
-      $.getScript("signup.js",function () {
-        var places = new google.maps.places.Autocomplete(document.getElementById('ownPlaces'));
-
-      });
-      // $("#passwordParent").html(passwordDiv);
-      $("#submitBtn").attr("disabled", false);
-    }
-    if ($(this).val() == 2) {
-
-      $("#headingChange").hide();
-      $("#headingChange2").html("Seller Details");
-      $("#parent").html(seller);
-      $("#step2").hide();
-      $("#step3").hide();
-      $("#submitBtn").attr("disabled",true);
-
-      $("#contact").on("change",function(){
-        contact=$("#contact").val();
-        $.post("duplicationCheck.php",
-        {
-        contact:contact
-      },
-      function(data, status){
-        if (data!='') {
-          alert("Account already exists");
-          // $(".invalidContact").css('visibility', 'visible');
-          // $(".invalidContact").html("Contact number already Exist");
-          $("#submitBtn").attr("disabled",true);
-          $("#nextstep1").attr("disabled",true);
-
-        }else{
-          // $(".invalidContact").html("");
-          $("#submitBtn").attr("disabled",false);
-          $("#nextstep1").attr("disabled",false);
-
-        }
-
-      });
-      });
-      $("#prevbtn").on("click",function(){
-        window.location.replace("signup2.php");
-      });
-      $("#nextstep1").on("click",function () {
-
-
-        if($("#firstName").val()==''){
-          $(".invalidFirstName").css('visibility', 'visible');
-        }else if ($("#contact").val()=='' || $("#contact").val().length<10 || $("#contact").val().length>10) {
-          $(".invalidContact").css('visibility', 'visible');
-          $(".invalidContact").html("Enter 10 Digit Contact number("+$("#contact").val().length+" provided)");
-
-        }else if($("#lastName").val()==''){
-          $(".invalidLastName").css('visibility', 'visible');
-        }else if (!Validate()) {
-
-        }else if($("#password").val()=='' || $("#password").val().length<8 ){
-          $(".invalidPassword").css('visibility', 'visible');
-          $(".invalidPassword").html("Enter a valid password using above rules");
-        }
-        else{
-          $("#step1").hide();
-          $("#step2").show();
-        }
-      });
-
-      $("#nextstep2").on("click",function () {
-        if ($("#typeSeller").val()==0) {
-          $(".invalidType").css('visibility', 'visible');
-          $(".invalidType").html("Choose a seller type");
-        }else if ($("#ownPlaces").val()=='') {
-          $(".invalidAddress").css('visibility', 'visible');
-          $(".invalidAddress").html("Please enter your address");
-        }else if ($("#ownCity").val()=='') {
-          $(".invalidCity").css('visibility', 'visible');
-          $(".invalidCity").html("Your city is required");
-        }else if ($("#ownState").val()=='') {
-          $(".invalidState").css('visibility', 'visible');
-          $(".invalidState").html("Your state is required");
-        }else if ($("#ownPinCode").val()=='') {
-          $(".invalidPincode").css('visibility', 'visible');
-          $(".invalidPincode").html("Your Pincode is required");
-        }else {
-          $("#submitBtn").attr("disabled",false);
-
-          $("#step2").hide();
-          $("#step3").show();
-        }
-      });
-
-      $("#prevbtn").on("click",function () {
-        $("#step1").show();
-        $("#step2").hide();
-      });
-
-      $("#prevstep2").on("click",function(){
-        $("#step2").hide();
-        $("#step1").show();
-      });
-      $("#prevstep3").on("click",function(){
-        $("#step3").hide();
-        $("#step2").show();
-      });
-      // $("#passwordParent").html(passwordDiv);
-      $("#submitBtn").attr("disabled", false);
-      $.getScript("signup.js",function () {
-        var places = new google.maps.places.Autocomplete(document.getElementById('ownPlaces'));
-
-      });
-    }
-    if ($(this).val() == 3) {
-      $("#headingChange").hide();
-      $("#headingChange2").html("Wellness Advisor details");
-      $("#parent").html(medicalExp);
-      $("#prevbtn").on("click",function(){
-        window.location.replace("signup2.php");
-      });
-      $("#contact").on("change",function(){
-        contact=$("#contact").val();
-        $.post("duplicationCheck.php",
-        {
-        contact:contact
-      },
-      function(data, status){
-        if (data!='') {
-          alert("Account already exists");
-          // $(".invalidContact").css('visibility', 'visible');
-          // $(".invalidContact").html("Contact number already Exist");
-          $("#submitBtn").attr("disabled",true);
-          $("#nextstep1").attr("disabled",true);
-
-        }else{
-          // $(".invalidContact").html("");
-          $("#submitBtn").attr("disabled",false);
-          $("#nextstep1").attr("disabled",false);
-
-        }
-
-      });
-      });
-      // $("#passwordParent").html(passwordDiv);
-      $("#submitBtn").attr("disabled", false);
-
-    }
-    if ($(this).val() == 4) {
-      $("#headingChange").hide();
-      $("#headingChange2").html("Community Details");
-      $("#parent").html(communOrg);
-      $("#prevbtn").on("click",function(){
-        window.location.replace("signup2.php");
-      });
-      $("#contact").on("change",function(){
-        contact=$("#contact").val();
-        $.post("duplicationCheck.php",
-        {
-        contact:contact
-      },
-      function(data, status){
-        if (data!='') {
-          alert("Account already exists");
-          // $(".invalidContact").css('visibility', 'visible');
-          // $(".invalidContact").html("Contact number already Exist");
-          $("#submitBtn").attr("disabled",true);
-          $("#nextstep1").attr("disabled",true);
-
-        }else{
-          // $(".invalidContact").html("");
-          $("#submitBtn").attr("disabled",false);
-          $("#nextstep1").attr("disabled",false);
-
-        }
-
-      });
-      });
-      // $("#passwordParent").html(passwordDiv);
-      $("#submitBtn").attr("disabled", false);
-
-    }
-  });
 </script>
 
 <script type="text/javascript">
